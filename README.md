@@ -40,3 +40,45 @@ Hints View is a Laravel development tool that injects helpful Blade debugging an
 
 ```bash
 composer require ezmu/view-hints
+
+2. Register the service provider in config/app.php or your custom providers array:
+
+'providers' => [
+    // Other service providers...
+    Ezmu\ViewHints\ViewHintServiceProvider::class,
+],
+
+
+Usage
+Enabling Hints with ?templatehints=1
+
+To toggle the hints dynamically, append ?templatehints=1 to any URL while logged in as an admin user.
+
+Example URL:
+
+https://yourapp.test/dashboard?templatehints=1
+
+The hints will only appear if all of the following are true:
+
+    APP_DEBUG is true
+
+    The URL contains ?templatehints=1
+
+Requirements
+
+    Laravel 9.x or higher
+
+    PHP 8.x or higher
+
+
+Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to fork and submit pull requests.
+License
+
+MIT License
+Author
+
+EzEldeen A. Y. Mushtaha
+GitHub: https://github.com/ezmu
+LinkedIn: https://www.linkedin.com/in/ezmush/
