@@ -146,23 +146,23 @@ private function renderException(){
                 $burl = url('');
                 foreach ($finder as $backupFile) {
                     $backupPath = $backupFile->getRealPath();
-                    $restoreHtml .= "<p>🗃Backup found: <code>{$backupFile->getFilename()}</code>
+                    $restoreHtml .= "<p><i class='ti ti-database-export'></i>Backup found: <code>{$backupFile->getFilename()}</code>
                         &nbsp;
-                        <span class='template-edit-btn-backup' data-blade='{$backupPath}' style='cursor:pointer; font-size:10px; color:#007bff;'>📝Edit Backup</span>
+                        <span class='template-edit-btn-backup' data-blade='{$backupPath}' style='cursor:pointer; font-size:10px; color:#007bff;'><i class='ti ti-eye'></i>View Backup</span>
                         <form method='POST' action='{$burl}/dev/restore-blade' style='display:inline;'>
                             " . csrf_field() . "
                             <input type='hidden' name='path' value='{$relativePath}'>
                             <input type='hidden' name='backupPath' value='{$backupFile->getRealPath()}'>
-                            <button type='submit' style='background:red;color:white;padding:4px 8px;border:none;border-radius:5px;'>🔁Restore</button>
+                            <button type='submit' style='background:red;color:white;padding:4px 8px;border:none;border-radius:5px;'><i class='ti ti-database-export'></i>Restore</button>
                         </form></p>";
                     break;
                 }
             }
 
-            $editBtn = "<span class='template-edit-btn' data-blade='{$relativePath}' style='cursor:pointer; font-size:10px; color:#007bff;'>📝Edit Blade</span>&nbsp;&nbsp;";
+            $editBtn = "<span class='template-edit-btn' data-blade='{$relativePath}' style='cursor:pointer; font-size:10px; color:#007bff;'><i class='ti ti-pencil'></i>Edit Blade</span>&nbsp;&nbsp;";
 
             return "<div style='background:#fff0f0;border:2px dashed red;padding:15px;margin:15px;font-family:monospace;z-index:9999;'>
-                <h3>💥 Blade Error in: <code>{$relativePath}</code></h3>
+                <h3><i class='ti ti-alert-circle'></i>Blade Error in: <code>{$relativePath}</code></h3>
                 {$restoreHtml}
                 {$editBtn}
             </div>";
@@ -227,11 +227,11 @@ private function renderException(){
 
 <!-- Blade Editor Modal -->
 <div id="blade-editor-modal">
-    <h4>Edit Blade File: <span id="blade-editor-path"></span></h4>
+    <h4><i class="ti ti-pencil"></i>Edit Blade File: <span id="blade-editor-path"></span></h4>
     <textarea id="blade-editor-content" style="display:none; height: 500px;"></textarea>
     <div style="margin-top:10px; text-align:right;">
-        <button onclick="saveBladeFile()">💾 Save</button>
-        <button onclick="document.getElementById('blade-editor-modal').style.display = 'none'">❌ Cancel</button>
+        <button onclick="saveBladeFile()"><i class="ti ti-device-floppy"></i>Save</button>
+        <button onclick="document.getElementById('blade-editor-modal').style.display = 'none'"><i class="ti ti-x"></i>Cancel</button>
     </div>
 </div>
 
@@ -315,7 +315,11 @@ document.addEventListener('DOMContentLoaded', function () {
 HTML;
     }
     public function boot() {
-        
+    if (!config('app.debug') 
+     
+            ) {
+        return;
+    }
         $this->loadRoutes();
            $this->renderException();
         if (request()->has('templatehints')) {

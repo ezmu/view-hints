@@ -56,21 +56,7 @@ class HintedCompilerEngine extends CompilerEngine {
             define('VIEW_HINT_GRAPESJS_INJECTED', true);
             $hintshtml .= <<<HTML
 
-<!-- GrapesJS + Plugins -->
-<script src="https://unpkg.com/grapesjs"></script>
-<script src="https://unpkg.com/grapesjs-preset-webpage"></script>
-<script src="https://unpkg.com/grapesjs-blocks-basic"></script>
-<script src="https://unpkg.com/grapesjs-plugin-forms"></script>
-<script src="https://unpkg.com/grapesjs-navbar"></script>
-<script src="https://unpkg.com/grapesjs-tooltip"></script>
-<script src="https://unpkg.com/grapesjs-tabs"></script>
-<script src="https://unpkg.com/grapesjs-custom-code"></script>
-<script src="https://unpkg.com/grapesjs-touch"></script>
-<script src="https://unpkg.com/grapesjs-parser-postcss"></script>
-<script src="https://unpkg.com/grapesjs-tui-image-editor"></script>
-<script src="https://unpkg.com/grapesjs-typed"></script>
-<script src="https://unpkg.com/grapesjs-style-bg"></script>
-<script src="https://cdn.jsdelivr.net/npm/js-beautify@1.14.7/js/lib/beautify-html.js"></script>
+
 <style>
 #grapesjs-editor-modal {
     display: none;
@@ -135,7 +121,7 @@ class HintedCompilerEngine extends CompilerEngine {
 <div id="grapesjs-editor-modal">
     <div class="editor-wrapper">
         <div class="editor-toolbar">
-            <strong>GrapesJS Editor</strong>
+            <strong><i class="ti ti-eye"></i>Visual Editor</strong>
             <button class="btn-editor btn-close" onclick="closeGrapesModal()">Close</button>
             <div class="editor-footer">
                 <button class="btn-editor btn-save" onclick="saveGrapesContent()">Save</button>
@@ -370,22 +356,21 @@ HTML;
         $relativePath = Str::after($filePath, base_path() . '/');
         $escapedPath = htmlspecialchars($relativePath, ENT_QUOTES);
         $editBtn = <<<HTML
-<span class="template-edit-btn" data-blade="{$relativePath}" style="cursor:pointer; font-size:10px; color:#007bff;">📝Edit Blade</span>
+<span class="template-edit-btn" data-blade="{$relativePath}" style="cursor:pointer; font-size:10px; color:#007bff;"><i class="ti ti-pencil"></i>Edit Blade</span>
 &nbsp;&nbsp;
-<span class="template-grapesjs-btn" data-blade="{$relativePath}" style="cursor:pointer; font-size:10px; color:#28a745;">🎨Edit GrapesJS</span>
+<span class="template-grapesjs-btn" data-blade="{$relativePath}" style="cursor:pointer; font-size:10px; color:#28a745;"><i class="ti ti-puzzle"></i>Edit Visual</span>
 HTML;
 
         $hintshtml .= <<<HTML
 <div class="template-hint"> {$editBtn}
-    <div class="template-hint-toggle" onclick="document.getElementById('{$id}').classList.toggle('d-none')">
-        🔍 View Variables for: <a href="{$bladeLink}" target="_blank" style="text-decoration:none;">{$relativePath}</a>
+    <div class="template-hint-toggle" onclick="document.getElementById('{$id}').classList.toggle('d-none')"><i class="ti ti-eye"></i>View Variables for: <i class="ti ti-file-code"></i><a href="{$bladeLink}" target="_blank" style="text-decoration:none;">{$relativePath}</a>
     </div>
     <div class="d-none" id="{$id}">
         <div class="template-hint-search">
-            <input type="text" class="search-input" placeholder="🔍 Filter variables..." onkeyup="filterHintTable(this)">
+            <input type="text" class="search-input" placeholder="Filter variables..." onkeyup="filterHintTable(this)">
         </div>
         <div style="margin-bottom: 8px;">
-            <button onclick="exportHintJSON('{$id}')" style="padding:4px 8px; cursor:pointer;">💾 Export JSON</button>
+            <button onclick="exportHintJSON('{$id}')" style="padding:4px 8px; cursor:pointer;"><i class="ti ti-database-export"></i>Export JSON</button>
         </div>
         <div class="template-hint-scroll">
             {$this->renderVariableTable($data)}
@@ -426,7 +411,22 @@ HTML;
   define("VIEW_HINT_EDITOR_INJECTED", true);
         return <<<HTML
              <meta name="csrf-token" content="{$csrf}">
-
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+<!-- GrapesJS + Plugins -->
+<script src="https://unpkg.com/grapesjs"></script>
+<script src="https://unpkg.com/grapesjs-preset-webpage"></script>
+<script src="https://unpkg.com/grapesjs-blocks-basic"></script>
+<script src="https://unpkg.com/grapesjs-plugin-forms"></script>
+<script src="https://unpkg.com/grapesjs-navbar"></script>
+<script src="https://unpkg.com/grapesjs-tooltip"></script>
+<script src="https://unpkg.com/grapesjs-tabs"></script>
+<script src="https://unpkg.com/grapesjs-custom-code"></script>
+<script src="https://unpkg.com/grapesjs-touch"></script>
+<script src="https://unpkg.com/grapesjs-parser-postcss"></script>
+<script src="https://unpkg.com/grapesjs-tui-image-editor"></script>
+<script src="https://unpkg.com/grapesjs-typed"></script>
+<script src="https://unpkg.com/grapesjs-style-bg"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-beautify@1.14.7/js/lib/beautify-html.js"></script>
 <!-- GrapesJS CSS -->
 <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet" />
 <!-- CodeMirror Styles & Scripts -->
@@ -467,11 +467,11 @@ HTML;
 
 <!-- Blade Editor Modal -->
 <div id="blade-editor-modal">
-    <h4>Edit Blade File: <span id="blade-editor-path"></span></h4>
+    <h4><i class="ti ti-pencil"></i>Edit Blade File: <span id="blade-editor-path"></span></h4>
     <textarea id="blade-editor-content" style="display:none; height: 500px;"></textarea>
     <div style="margin-top:10px; text-align:right;">
-        <button onclick="saveBladeFile()">💾 Save</button>
-        <button onclick="document.getElementById('blade-editor-modal').style.display = 'none'">❌ Cancel</button>
+        <button onclick="saveBladeFile()"><i class="ti ti-device-floppy"></i>Save</button>
+        <button onclick="document.getElementById('blade-editor-modal').style.display = 'none'"><i class="ti ti-x"></i>Cancel</button>
     </div>
 </div>
 
@@ -583,7 +583,7 @@ HTML;
                                     " . csrf_field() . "
                                     <input type='hidden' name='path' value='{$relativePath}'>
                                     <input type='hidden' name='backupPath' value='{$backupFile->getRealPath()}'>
-                                    <button type='submit' style='background:red;color:white;padding:4px 8px;border:none;border-radius:5px;'>🔁 Restore</button>
+                                    <button type='submit' style='background:red;color:white;padding:4px 8px;border:none;border-radius:5px;'><i class='ti ti-database-import'></i>Restore</button>
                                 </form>";
                                 break;
                             }
@@ -593,7 +593,7 @@ HTML;
                         return "<div style='background:#fff0f0;border:2px dashed red;padding:15px;margin:15px;font-family:monospace;z-index:9999;'>
                         <h3>💥 Blade Error in: <code>{$relativePath}</code></h3>
                         {$restoreHtml}
-                        <a href='{$editorUrl}' target='_blank' style='display:inline-block;margin-top:10px;padding:6px 10px;background:#333;color:#fff;border-radius:4px;text-decoration:none;'>✏️ Edit Blade</a>
+                        <a href='{$editorUrl}' target='_blank' style='display:inline-block;margin-top:10px;padding:6px 10px;background:#333;color:#fff;border-radius:4px;text-decoration:none;'><i class='ti ti-pencil'></i>Edit Blade</a>
                     </div>";
     }
     private function renderVariableTable($data, $level = 0) {

@@ -1,22 +1,14 @@
 {
-    "name": "ez/view-hints",
-    "description": "Laravel view debugger with hints and composer integration",
-    "type": "library",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Ezmu\\ViewHints\\": "src/"
-        }
-    },
-    "require": {
-        "php": ">=8.0",
-        "illuminate/support": "^9 || ^10 || ^11"
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Ezmu\\ViewHints\\ViewHintServiceProvider"
-            ]
-        }
+  "name": "ezmu/view-hints",
+  "description": "Laravel View Hints package",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Ezmu\\ViewHints\\": "src/"
     }
+  },
+  "require": {
+    "php": ">=8.0",
+    "illuminate/support": "^9 || ^10 || ^11 || ^12"
+  }
 }
