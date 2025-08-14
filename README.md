@@ -4,11 +4,11 @@ Hints View is a Laravel development tool that injects helpful Blade debugging an
 
 ---
 ### Screenshots
-![Screenshot 2025-07-27 16-54-21](screenshots/Screenshot from 2025-07-27 16-54-21.png)
-![Screenshot 2025-07-28 17-16-01](screenshots/Screenshot from 2025-07-28 17-16-01.png)
-![Screenshot 2025-07-28 17-16-56](screenshots/Screenshot from 2025-07-28 17-16-56.png)
-![Screenshot 2025-07-28 17-17-29](screenshots/Screenshot from 2025-07-28 17-17-29.png)
-![Screenshot 2025-07-27 16-52-23](screenshots/Screenshot from 2025-07-27 16-52-23.png)
+![Screenshot 2025-07-27 16-54-21](screenshots/Screenshot%20from%202025-07-27%2016-54-21.png)
+![Screenshot 2025-07-28 17-16-01](screenshots/Screenshot%20from%202025-07-28%2017-16-01.png)
+![Screenshot 2025-07-28 17-16-56](screenshots/Screenshot%20from%202025-07-28%2017-16-56.png)
+![Screenshot 2025-07-28 17-17-29](screenshots/Screenshot%20from%202025-07-28%2017-17-29.png)
+![Screenshot 2025-07-27 16-52-23](screenshots/Screenshot%20from%202025-07-27%2016-52-23.png)
 
 ## Features
 
