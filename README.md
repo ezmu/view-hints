@@ -3,6 +3,12 @@
 Hints View is a Laravel development tool that injects helpful Blade debugging and editing features directly into your application views. It is designed to speed up UI development and debugging by making Blade file structures and variables transparent and editable.
 
 ---
+### Screenshots
+![Screenshot 2025-07-27 16-54-21](screenshots/Screenshot from 2025-07-27 16-54-21.png)
+![Screenshot 2025-07-28 17-16-01](screenshots/Screenshot from 2025-07-28 17-16-01.png)
+![Screenshot 2025-07-28 17-16-56](screenshots/Screenshot from 2025-07-28 17-16-56.png)
+![Screenshot 2025-07-28 17-17-29](screenshots/Screenshot from 2025-07-28 17-17-29.png)
+![Screenshot 2025-07-27 16-52-23](screenshots/Screenshot from 2025-07-27 16-52-23.png)
 
 ## Features
 
